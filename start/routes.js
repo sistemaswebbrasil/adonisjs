@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /*
 |--------------------------------------------------------------------------
@@ -14,21 +14,21 @@
 */
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
-const Route = use("Route");
+const Route = use('Route');
 
-Route.get("/", () => ({ greeting: "Hello world in JSON" }));
+Route.get('/', () => ({ greeting: 'Hello world in JSON' }));
 
 Route.group(() => {
-  Route.post("login", "AuthController.login").middleware("guest");
+  Route.post('login', 'AuthController.login').middleware('guest');
 
-  Route.post("signup", "AuthController.signup").middleware("guest");
+  Route.post('signup', 'AuthController.signup').middleware('guest');
 
-  Route.get("profile", "AuthController.profile").middleware("auth");
+  Route.get('profile', 'AuthController.profile').middleware('auth');
 
-  Route.get("username-exists/:username", "AuthController.findByUsername").middleware("guest");
-  Route.get("email-exists/:email", "AuthController.findByEmail").middleware("guest");
+  Route.get('username-exists/:username', 'AuthController.findByUsername').middleware('guest');
+  Route.get('email-exists/:email', 'AuthController.findByEmail').middleware('guest');
 
-  Route.resource("users", "UserController")
+  Route.resource('users', 'UserController')
     .apiOnly()
-    .middleware("auth");
-}).prefix("api/");
+    .middleware('auth');
+}).prefix('api/');

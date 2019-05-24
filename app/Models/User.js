@@ -6,9 +6,7 @@ const Model = use('Model');
 const Hash = use('Hash');
 
 class User extends Model {
-
   static boot () {
-
     super.boot();
 
     /**
@@ -16,15 +14,10 @@ class User extends Model {
      * it to the database.
      */
     this.addHook('beforeSave', async userInstance => {
-
       if (userInstance.dirty.password) {
-
         userInstance.password = await Hash.make(userInstance.password);
-
       }
-
     });
-
   }
 
   /**
@@ -38,11 +31,8 @@ class User extends Model {
    * @return {Object}
    */
   tokens () {
-
     return this.hasMany('App/Models/Token');
-
   }
-
 }
 
 module.exports = User;
