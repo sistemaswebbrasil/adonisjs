@@ -31,4 +31,6 @@ Route.group(() => {
   Route.resource('users', 'UserController')
     .apiOnly()
     .middleware('auth');
+
+  Route.post('change-password', 'UserController.changePassword').middleware('auth');
 }).prefix('api/');
